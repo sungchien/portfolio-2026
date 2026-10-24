@@ -16,23 +16,73 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      background: linear-gradient(135deg, #faf8f5 0%, #f3ede2 100%);
       font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
       padding: 20px;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #111827 100%);
     }
 
     .card {
-      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #c9ffbf 100%);
+      position: relative;
+      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #e0c3fc 100%);
       background-size: 200% 200%;
       animation: gradientShift 8s ease infinite;
       border-radius: 24px;
-      padding: 48px 40px;
-      max-width: 440px;
+      padding: 56px 40px 44px;
+      max-width: 460px;
       width: 100%;
       text-align: center;
       box-shadow: 0 20px 45px rgba(238, 156, 167, 0.35),
                   inset 0 0 0 1px rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(10px);
+      transition: box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    body.dark-mode .card {
+      background: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #831843 100%);
+      background-size: 200% 200%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                  0 0 30px rgba(168, 85, 247, 0.25),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #4a354f;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    body.dark-mode .theme-toggle {
+      color: #f3e8ff;
+      background: rgba(30, 27, 75, 0.75);
+      border-color: rgba(192, 132, 252, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .theme-toggle:hover {
+      background: rgba(46, 16, 101, 0.95);
     }
 
     @keyframes gradientShift {
@@ -48,54 +98,93 @@
       margin-bottom: 28px;
       letter-spacing: 0.5px;
       text-shadow: 0 2px 6px rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    body.dark-mode h1 {
+      color: #fdf4ff;
+      text-shadow: 0 2px 10px rgba(217, 70, 239, 0.45);
     }
 
     .glow-btn {
       position: relative;
       display: inline-block;
-      padding: 15px 36px;
+      padding: 15px 38px;
       font-size: 1.1rem;
       font-weight: 600;
       color: #ffffff;
-      background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 50%, #a18cd1 100%);
+      background: linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #ec4899 100%);
       border: none;
       border-radius: 999px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 117, 140, 0.7),
-                  0 0 40px rgba(161, 140, 209, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 20px rgba(192, 38, 211, 0.45),
+                  0 0 30px rgba(236, 72, 153, 0.35);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.25s ease,
+                  filter 0.25s ease;
       outline: none;
     }
 
-    .glow-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 117, 140, 0.9),
-                  0 0 55px rgba(161, 140, 209, 0.7);
+    .glow-btn:hover,
+    .hover\:scale-105:hover {
+      transform: scale(1.05);
+    }
+
+    .glow-btn:hover,
+    .hover\:shadow-lg:hover {
+      box-shadow: 0 10px 25px -3px rgba(192, 38, 211, 0.65),
+                  0 4px 10px -2px rgba(236, 72, 153, 0.5),
+                  0 0 45px rgba(168, 85, 247, 0.6);
+      filter: brightness(1.06);
     }
 
     .glow-btn:active {
-      transform: translateY(1px) scale(0.98);
+      transform: scale(0.98);
+    }
+
+    .agent-subtext {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #5b4663;
+      letter-spacing: 0.3px;
+      opacity: 0.9;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .agent-subtext {
+      color: #e9d5ff;
     }
 
     .feedback-area {
-      margin-top: 28px;
+      margin-top: 24px;
       min-height: 76px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.68);
       border-radius: 16px;
       padding: 16px 20px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: opacity 0.3s ease;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.dark-mode .feedback-area {
+      background: rgba(15, 23, 42, 0.55);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
 
     .count-text {
       font-size: 0.95rem;
       font-weight: 600;
       color: #6c5b7b;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .count-text {
+      color: #f0abfc;
     }
 
     .quote-text {
@@ -103,13 +192,22 @@
       font-weight: 500;
       color: #355c7d;
       line-height: 1.5;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .quote-text {
+      color: #f8fafc;
     }
   </style>
 </head>
 <body>
   <main class="card">
+    <button id="themeToggleBtn" class="theme-toggle" type="button" aria-label="切換背景模式">
+      🌙 深色夜間
+    </button>
     <h1>Antigravity 破冰成功！</h1>
-    <button id="icebreakBtn" class="glow-btn" type="button">點我注入正能量 ✨</button>
+    <button id="icebreakBtn" class="glow-btn hover:scale-105 hover:shadow-lg" type="button">點我注入正能量 ✨</button>
+    <p class="agent-subtext">⚡ 由 Antigravity 2.0 桌面代理人自動迭代生成</p>
     <div id="feedbackArea" class="feedback-area">
       <p id="countDisplay" class="count-text">點擊次數：0 次</p>
       <p id="quoteDisplay" class="quote-text">點擊上方發光按鈕，開啟今天的好心情！</p>
@@ -131,12 +229,18 @@
     const btn = document.getElementById("icebreakBtn");
     const countDisplay = document.getElementById("countDisplay");
     const quoteDisplay = document.getElementById("quoteDisplay");
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
 
     btn.addEventListener("click", () => {
       clickCount++;
       const randomIndex = Math.floor(Math.random() * quotes.length);
       countDisplay.textContent = `點擊次數：${clickCount} 次`;
       quoteDisplay.textContent = quotes[randomIndex];
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const isDark = document.body.classList.toggle("dark-mode");
+      themeToggleBtn.textContent = isDark ? "☀️ 淺色米白" : "🌙 深色夜間";
     });
   </script>
 </body>
