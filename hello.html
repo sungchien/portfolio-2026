@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity 破冰成功！</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+      padding: 20px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #c9ffbf 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 45px rgba(238, 156, 167, 0.35),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      color: #3a2e39;
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 6px rgba(255, 255, 255, 0.7);
+    }
+
+    .glow-btn {
+      position: relative;
+      display: inline-block;
+      padding: 15px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 50%, #a18cd1 100%);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 117, 140, 0.7),
+                  0 0 40px rgba(161, 140, 209, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    .glow-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 117, 140, 0.9),
+                  0 0 55px rgba(161, 140, 209, 0.7);
+    }
+
+    .glow-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .feedback-area {
+      margin-top: 28px;
+      min-height: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: opacity 0.3s ease;
+    }
+
+    .count-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #6c5b7b;
+    }
+
+    .quote-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #355c7d;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Antigravity 破冰成功！</h1>
+    <button id="icebreakBtn" class="glow-btn" type="button">點我注入正能量 ✨</button>
+    <div id="feedbackArea" class="feedback-area">
+      <p id="countDisplay" class="count-text">點擊次數：0 次</p>
+      <p id="quoteDisplay" class="quote-text">點擊上方發光按鈕，開啟今天的好心情！</p>
+    </div>
+  </main>
+
+  <script>
+    const quotes = [
+      "🌟 每一次微小的嘗試，都是通往偉大作品的起點！",
+      "🚀 你的創造力沒有極限，繼續大膽探索吧！",
+      "🌈 寫程式就像變魔術，而你正在創造奇蹟！",
+      "✨ 今天也是充滿無限可能的一天，為自己喝采！",
+      "💡 靈感正在發光，保持這份熱情繼續前進吧！",
+      "🍀 相信自己的節奏，每一步都算數！",
+      "🔥 破冰成功！接下來的挑戰也難不倒你！"
+    ];
+
+    let clickCount = 0;
+    const btn = document.getElementById("icebreakBtn");
+    const countDisplay = document.getElementById("countDisplay");
+    const quoteDisplay = document.getElementById("quoteDisplay");
+
+    btn.addEventListener("click", () => {
+      clickCount++;
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      countDisplay.textContent = `點擊次數：${clickCount} 次`;
+      quoteDisplay.textContent = quotes[randomIndex];
+    });
+  </script>
+</body>
+</html>
